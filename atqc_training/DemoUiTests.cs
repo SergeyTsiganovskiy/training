@@ -7,6 +7,7 @@ using System;
 
 namespace atqc_training
 {
+    [Parallelizable(ParallelScope.Self)]
     [TestFixture]
     public class DemoTUIests
     {
