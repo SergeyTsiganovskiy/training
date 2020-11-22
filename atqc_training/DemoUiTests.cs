@@ -20,7 +20,8 @@ namespace atqc_training
         [SetUp]
         public void Preconditions()
         {
-            webdriver.Navigate().GoToUrl("https://www.epam.com/");
+            string url = "https://www.epam.com/";
+            webdriver.Navigate().GoToUrl(url);
         }
 
         [Test]
