@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
 
@@ -13,7 +14,8 @@ namespace atqc_training
 
         public DemoTUIests()
         {
-            webdriver = new ChromeDriver();
+            DesiredCapabilities browser = DesiredCapabilities.Chrome();
+            webdriver = new RemoteWebDriver(new Uri("http://192.168.0.101:4444/wd/hub"), browser);
             webdriver.Manage().Window.Maximize();
         }
 
