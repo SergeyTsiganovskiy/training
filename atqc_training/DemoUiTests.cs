@@ -53,7 +53,7 @@ namespace atqc_training
         {
             var wait = new WebDriverWait(webdriver, new TimeSpan(0, 0, 30));
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("ul[class=header__controls] a[href$=contact]"))).Click();
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("/about/who-we-are/contact"));
+            Assert.IsTrue(false);
         }
 
 
