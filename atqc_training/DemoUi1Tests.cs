@@ -7,29 +7,26 @@ using System;
 
 namespace atqc_training
 {
-    [Parallelizable(ParallelScope.All)]
+    [Parallelizable(ParallelScope.Fixtures)]
     [TestFixture]
-    public class DemoTUIests
+    public class DemoUi1Tests
     {
         IWebDriver webdriver;
+        const string url = "https://www.epam.com/";
 
-        public DemoTUIests()
+        public DemoUi1Tests()
         {
             DesiredCapabilities browser = DesiredCapabilities.Chrome();
             webdriver = new RemoteWebDriver(new Uri("http://192.168.0.101:4444/wd/hub"), browser);
+            //webdriver = new ChromeDriver();
             webdriver.Manage().Window.Maximize();
         }
 
-        [SetUp]
-        public void Preconditions()
+
+        [Test]
+        public void DemoUI1Method1()
         {
-            string url = "https://www.epam.com/";
             webdriver.Navigate().GoToUrl(url);
-        }
-
-        [Test]
-        public void DemoUIMethod1()
-        {
             var wait = new WebDriverWait(webdriver, new TimeSpan(0, 0, 30));
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("ul[class=header__controls] a[href$=contact]"))).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("/about/who-we-are/contact"));
@@ -37,27 +34,21 @@ namespace atqc_training
         }
 
         [Test]
-        public void DemoUIMethod2()
+        public void DemoUI1Method2()
         {
+            webdriver.Navigate().GoToUrl(url);
             var wait = new WebDriverWait(webdriver, new TimeSpan(0, 0, 30));
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("ul[class=header__controls] a[href$=contact]"))).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("/about/who-we-are/contact"));
         }
 
         [Test]
-        public void DemoUIMethod3()
+        public void DemoUI1Method3()
         {
+            webdriver.Navigate().GoToUrl(url);
             var wait = new WebDriverWait(webdriver, new TimeSpan(0, 0, 30));
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("ul[class=header__controls] a[href$=contact]"))).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("/about/who-we-are/contact"));
-        }
-
-        [Test]
-        public void DemoUIMethod4()
-        {
-            var wait = new WebDriverWait(webdriver, new TimeSpan(0, 0, 30));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("ul[class=header__controls] a[href$=contact]"))).Click();
-            Assert.IsTrue(false);
         }
 
 
